@@ -26,6 +26,7 @@ export default class Gallery{
     if(this.query === ''){
         this.clearMarkup();
     } else{
+    this.galleryRef.innerHTML = '';
     this.fetchGallery(this.query, this.page);
     }
   }
