@@ -1,4 +1,3 @@
-import debounce from 'lodash.debounce';
 import Gallery from './gallery';
 
 
@@ -7,14 +6,19 @@ selector: '.gallery',
 button: '.btn-primary'
 })
 
-const inputRef = document.querySelector('input[name="query"]');
+const searchRef = document.querySelector('.search-form');
 const loadMoreBtnRef = document.querySelector('.btn-primary')
 
-inputRef.addEventListener('input', debounce(searchHeandler, 500));
+searchRef.addEventListener('submit', searchHeandler);
 loadMoreBtnRef.addEventListener('click', moreBtnHeandler)
 
 function searchHeandler(event) {
-    galleryByQuery.renderGalleryMarkup(event.target.value)
+    event.preventDefault()
+    const query = event.currentTarget.elements.query.value;
+
+    if(query !== ''){
+    galleryByQuery.renderGalleryMarkup(query)
+    }
 }
 
 function moreBtnHeandler(){
