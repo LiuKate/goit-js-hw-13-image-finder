@@ -14,6 +14,7 @@ loadMoreBtnRef.addEventListener('click', moreBtnHeandler)
 
 function searchHeandler(event) {
     event.preventDefault()
+    galleryByQuery.clearMarkup();
     const query = event.currentTarget.elements.query.value;
 
     if(query !== ''){
